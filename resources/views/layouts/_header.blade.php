@@ -5,10 +5,10 @@
             @if (Auth::check())
                 <li class="nav-item"><a class="nav-link" href="#">用户列表</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->name }}</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('users.show', Auth::user()) }}">个
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="float:right;">
+                        <a class="dropdown-item" href="{{ route('users.show', Auth::user()) }}">个人中心</a>
                             <a class="dropdown-item" href="#">编辑资料</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" id="logout" href="#">
