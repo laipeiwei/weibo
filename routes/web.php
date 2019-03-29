@@ -20,3 +20,6 @@ Route::get('signup', 'UsersController@create')->name('signup');
 
 //用户操作路由
 Route::resource('users', 'UsersController');
+Route::get('login', 'SessionsController@create')->name('login');
+Route::post('login', 'SessionsController@store')->name('login');
+Route::delete('logout', 'SessionsController@destroy')->name('logout');
