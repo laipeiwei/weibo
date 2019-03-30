@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use think\response\Redirect;
+
 
 class SessionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['show', 'create', 'store']
+        ]);
+        $this->middleware('guest',[
+            'only' => ['create'],
+        ]);
+    }
     public function create()
     {
         return view('sessions.create');
@@ -20,7 +29,8 @@ class SessionsController extends Controller
         ]);
         if(Auth::attempt($credentials,$request->has('remember'))){
             session()->flash('success','欢迎回来！');
-            return redirect()->route('users.show', [Auth::user()]);
+            $callback = route('users.show', [Auth::user()]);
+            return redirect()->intended($callback);
         }else{
             session()->flash('danger','账号或密码错误');
             return redirect()->back()->withInput();
