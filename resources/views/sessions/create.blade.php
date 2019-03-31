@@ -21,8 +21,13 @@
                     <div class="form-group">
                         <div class="form-check">
                             <input type="checkbox" class="form-check-input" name="remember" >
-                            <label class="form-check-label" for="exampleCheck1">记住我</label>
+                            <label class="form-check-label" style="padding-right:5px;" for="exampleCheck1">记住我</label>
+                            <a href="{{ route('password.request') }}">忘记密码</a>
                         </div>
+
+
+
+
                     </div>
 
                     <button type="submit" class="btn btn-primary">登录</button>
